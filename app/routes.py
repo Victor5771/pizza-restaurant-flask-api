@@ -5,6 +5,10 @@ from app.models import Restaurant, Pizza, RestaurantPizza, db
 
 routes_bp = Blueprint('routes', __name__)
 
+@routes_bp.route('/', methods=['GET'])
+def index():
+    return 'Welcome to Pizza Restaurant API!'
+
 @routes_bp.route('/restaurants', methods=['GET'])
 def get_restaurants():
     restaurants = Restaurant.query.all()

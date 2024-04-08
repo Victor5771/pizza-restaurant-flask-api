@@ -5,12 +5,11 @@ from app import db
 class Restaurant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
+    address = db.Column(db.String(255), nullable=False)
 
-    
     __table_args__ = (
         db.CheckConstraint('LENGTH(name) <= 50', name='check_name_length'),
     )
-    address = db.Column(db.String(255), nullable=False)
 
     def serialize(self):
         return {
@@ -37,7 +36,6 @@ class RestaurantPizza(db.Model):
     pizza_id = db.Column(db.Integer, db.ForeignKey('pizza.id'), nullable=False)
     price = db.Column(db.Float, nullable=False)
 
-    
     __table_args__ = (
         db.CheckConstraint('price >= 1 AND price <= 30', name='check_price_range'),
     )

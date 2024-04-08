@@ -25,13 +25,13 @@ def create_app():
     db.init_app(app)
 
     with app.app_context():
-        # Import models here to ensure they are in the app context
+        
         from app.models import Restaurant
         
-        # Create tables if they don't exist
+        
         db.create_all()
 
-        # Insert initial data if the restaurant table is empty
+        
         if not Restaurant.query.first():
             restaurant1 = Restaurant(name='Dominion Pizza', address='Good Italian, Ngong Road, 5th Avenue')
             restaurant2 = Restaurant(name='Pizza Hut', address='Westgate Mall, Mwanzi Road, Nrb 100')

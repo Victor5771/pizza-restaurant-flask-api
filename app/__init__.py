@@ -11,16 +11,6 @@ def create_app():
     app.config.from_object(Config)
 
     from app.models import db
-    db.init_app(app)
-
-    from app.routes import routes_bp
-    app.register_blueprint(routes_bp)
-
-    return app
-
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object(Config)
 
     db.init_app(app)
 
